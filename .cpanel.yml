@@ -1,4 +1,6 @@
 deployment:
   tasks:
-    - export APP_ENV=production
-    - /bin/bash deploy.sh
+    - /opt/cpanel/composer/bin/composer install --no-dev --optimize-autoloader
+    - chmod -R 755 runtime web/assets
+    - chmod -R 777 runtime web/assets
+    - php yii migrate --interactive=0
